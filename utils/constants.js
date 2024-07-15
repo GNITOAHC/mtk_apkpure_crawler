@@ -16,5 +16,17 @@ export const filename = 'apkpure_source.csv'
 
 export const urlList = [
   { url: 'https://apkpure.com/tw/game_casual', name: 'casual-game' },
+  { url: 'https://apkpure.com/tw/game_action', name: 'action-game' },
   { url: 'https://apkpure.com/tw/game_adventure', name: 'adventure-game' },
+  { url: 'https://apkpure.com/tw/game_simulation', name: 'simulation-game' },
+  { url: 'https://apkpure.com/tw/game_sports', name: 'sport-game' },
+  { url: 'https://apkpure.com/tw/game_arcade', name: 'arcade-game' },
+  { url: 'https://apkpure.com/tw/game_role_playing', name: 'roleplaying-game' },
+  { url: 'https://apkpure.com/tw/tools', name: 'toolsi-app' },
+  { url: 'https://apkpure.com/tw/communication', name: 'communication-app' },
+  { url: 'https://apkpure.com/tw/social', name: 'social-app' },
+  { url: 'https://apkpure.com/tw/entertainment', name: 'entertainment-app' },
+  { url: 'https://apkpure.com/tw/video_players', name: 'videoplayers-app' },
+  { url: 'https://apkpure.com/tw/productivity', name: 'productivity-app' },
+  { url: 'https://apkpure.com/tw/shopping', name: 'shopping-app' },
 ]

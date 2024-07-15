@@ -30,7 +30,6 @@ async function pageEvaluate(page, category) {
           isAPK: isAPK ? 'apk' : 'xapk',
           category: category,
         })
-        if (i == 1) break
       }
 
       return names

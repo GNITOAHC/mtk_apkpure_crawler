@@ -11,7 +11,7 @@ export function writeToCsv(obj, filename) {
 }
 
 export function initCsv(filename) {
-  fs.writeFileSync(
+  fs.appendFileSync(
     filename,
     'name, location, isapk, category\n',
     'utf8',
