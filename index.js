@@ -10,6 +10,7 @@ async function pageEvaluate(page, category) {
       const moreListSection = document.querySelector(
         '.category-apk-list-box.category-multiple-apk-list-box.category-module.is-tab'
       )
+      if (moreListSection == null) { return [] }
       const moreList = moreListSection
         .querySelector('div div div')
         .querySelector('.apk-grid-item.no-grid')
@@ -22,12 +23,13 @@ async function pageEvaluate(page, category) {
         const downloadLocation = list[i].childNodes[1]
           .querySelector('.apk-grid-download.apk-grid-button')
           .getAttribute('href')
-        const isAPK = await checkIsAPK(downloadLocation)
+        const { isAPK, packageName } = await checkIsAPK(downloadLocation)
 
         names.push({
           name: item.innerText,
           location: downloadLocation + 'ing',
           isAPK: isAPK ? 'apk' : 'xapk',
+          packageName: packageName,
           category: category,
         })
       }
@@ -44,12 +46,22 @@ function checkIsAPKOuter(browser) {
     const newpage = await browser.newPage()
     await newpage.goto(url)
     const checkAPK = await newpage.evaluate(() => {
-      const t = document.querySelector('.download-text.one-line').innerText
+      let t = document.querySelector('.download-text.one-line')
+      if (t == null) {
+        return null
+      }
+      t = t.innerText
       if (t.includes('XAPK') || t.includes('xapk')) return false
       return true
     })
+    const packageName = await newpage.evaluate(() => {
+      let pn = document.querySelector('.value.double-lines')
+      if (pn == null) return null
+      pn = pn.innerText
+      return pn
+    })
     newpage.close()
-    return checkAPK
+    return { isAPK: checkAPK, packageName: packageName }
   }
 }
 
